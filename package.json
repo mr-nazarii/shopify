@@ -24,8 +24,13 @@
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
+    "@react-three/drei": "^9.92.1",
+    "@react-three/fiber": "^8.15.12",
+    "@types/three": "^0.159.0",
     "clsx": "^2.0.0",
     "geist": "^1.0.0",
+    "lamina": "^1.1.23",
+    "leva": "^0.9.35",
     "next": "14.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
