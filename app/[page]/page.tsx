@@ -4,8 +4,7 @@ import Prose from 'components/prose';
 import { getPage } from 'lib/shopify';
 import { notFound } from 'next/navigation';
 
-export const runtime = 'nodejs';
-
+export const runtime = 'edge';
 export const revalidate = 43200; // 12 hours in seconds
 
 export async function generateMetadata({
