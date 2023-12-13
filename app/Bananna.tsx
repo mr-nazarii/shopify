@@ -44,13 +44,17 @@ export function Bannnaaa() {
 }
 
 function Bannana(props: any) {
-  const { scene, nodes, materials, animations } = useGLTF('/bananna.glb');
+  const { scene, animations } = useGLTF('/bananna.glb');
   const banannaAnimations = useAnimations(animations, scene);
 
-  const animation = banannaAnimations.names.length > 1 ? banannaAnimations.names[1] : null;
-  if (animation && banannaAnimations.actions[animation]) {
-    banannaAnimations.actions[animation].play();
+  // Ensure that there is an animation name and the corresponding action exists.
+  const animationName = banannaAnimations.names.length > 1 ? banannaAnimations.names[1] : null;
+  const animationAction = animationName ? banannaAnimations.actions[animationName] : null;
+
+  if (animationAction) {
+    animationAction.play();
   }
+
   return <primitive object={scene} {...props} />;
 }
 
@@ -63,7 +67,8 @@ function CameraRig({ v = new THREE.Vector3() }) {
 }
 
 function Lightformers({ positions = [2, 0, 2, 0, 2, 0, 2, 0] }) {
-  const group = useRef();
+  const group = useRef<THREE.Group>(null);
+
   useFrame((state, delta) => {
     if (group.current) {
       if ((group.current.position.z += delta * 10) > 20) {
