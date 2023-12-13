@@ -6,6 +6,9 @@ module.exports = {
   },
   images: {
     formats: ['image/avif', 'image/webp'],
+    experimental: {
+      appDir: false
+    },
     remotePatterns: [
       {
         protocol: 'https',
