@@ -18,15 +18,15 @@ import { LayerMaterial, Color, Depth } from 'lamina';
 export function Bannnaaa() {
   const [degraded, degrade] = useState(false);
   return (
-    <Canvas shadows camera={{ position: [105, 0, 15], fov: 0 }}>
-      {/* <spotLight
+    <Canvas shadows camera={{ position: [105, 0, 15], fov: 20 }}>
+      <spotLight
         position={[1, 12, 0]}
         angle={0.3}
         penumbra={10}
         castShadow
         intensity={2}
         shadow-bias={-0.0001}
-      /> */}
+      />
       <ambientLight intensity={0.5} />
       <Bannana scale={0.02} position={[-0.5, -2.18, 0]} rotation={[0, Math.PI / 5, 0]} />
       <AccumulativeShadows position={[0, -1.16, 0]} frames={100} alphaTest={0} scale={100}>
@@ -47,8 +47,10 @@ function Bannana(props: any) {
   const { scene, nodes, materials, animations } = useGLTF('/bananna.glb');
   const banannaAnimations = useAnimations(animations, scene);
 
-  const animation = banannaAnimations.names[1];
-  banannaAnimations.actions[animation].play();
+  const animation = banannaAnimations.names.length > 1 ? banannaAnimations.names[1] : null;
+  if (animation && banannaAnimations.actions[animation]) {
+    banannaAnimations.actions[animation].play();
+  }
   return <primitive object={scene} {...props} />;
 }
 
@@ -62,10 +64,13 @@ function CameraRig({ v = new THREE.Vector3() }) {
 
 function Lightformers({ positions = [2, 0, 2, 0, 2, 0, 2, 0] }) {
   const group = useRef();
-  useFrame(
-    (state, delta) =>
-      (group.current.position.z += delta * 10) > 20 && (group.current.position.z = -60)
-  );
+  useFrame((state, delta) => {
+    if (group.current) {
+      if ((group.current.position.z += delta * 10) > 20) {
+        group.current.position.z = -60;
+      }
+    }
+  });
   return (
     <>
       {/* Ceiling */}
