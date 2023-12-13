@@ -43,7 +43,7 @@ export function Bannnaaa() {
   );
 }
 
-function Bannana(props) {
+function Bannana(props: any) {
   const { scene, nodes, materials, animations } = useGLTF('/bananna.glb');
   const banannaAnimations = useAnimations(animations, scene);
 
