@@ -1,9 +1,6 @@
-import { Canvas } from '@react-three/fiber';
 import { Carousel } from 'components/carousel';
-import { ThreeItemGrid } from 'components/grid/three-items';
 import Footer from 'components/layout/footer';
 import Search from 'components/layout/navbar/search';
-import Head from 'next/head';
 import { Suspense } from 'react';
 import { Banannas2 } from './Banannas';
 // import { TheOne } from './Load.tsx';

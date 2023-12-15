@@ -5,8 +5,7 @@ import { useState, useMemo, Suspense } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF, Float, PerformanceMonitor, Environment } from '@react-three/drei';
 import { LayerMaterial as OldLayerMaterial, Base, Depth, Fresnel } from 'lamina-old/vanilla';
-import { LayerMaterial, Texture } from 'lamina';
-import { Bg, Lightformers } from './Bg';
+import { Lightformers } from './Bg';
 
 const colorA = new THREE.Color('#ff9900').convertSRGBToLinear();
 const colorB = new THREE.Color('#f7e439').convertSRGBToLinear();
@@ -21,6 +20,7 @@ const material = new OldLayerMaterial({
       mode: 'normal',
       near: 0,
       far: 2,
+      // @ts-ignore
       origin: [1, 1, 1]
     }),
     new Depth({
@@ -30,6 +30,7 @@ const material = new OldLayerMaterial({
       mode: 'add',
       near: 3,
       far: 2,
+      // @ts-ignore
       origin: [1, 1, 1]
     }),
     new Fresnel({ mode: 'add', color: fresnel, intensity: 0.3, power: 2.5, bias: 0.0 })
@@ -49,6 +50,7 @@ function Noodle() {
   const { nodes } = useGLTF('/bananaTest.glb');
   console.log(nodes);
   // const [geometry] = useState(() => nodes[`Object_143`].geometry);
+  // @ts-ignore
   const [geometry] = useState(() => nodes[`banana_low_Banana_0`].geometry);
 
   const [speed] = useState(() => 0.1 + Math.random() / 10);
