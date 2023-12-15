@@ -35,6 +35,9 @@ dependencies:
   lamina:
     specifier: ^1.1.23
     version: 1.1.23(@react-three/fiber@8.15.12)(@types/react-dom@18.2.14)(@types/react@18.2.33)(react-dom@18.2.0)(react@18.2.0)(three@0.159.0)
+  lamina-old:
+    specifier: npm:lamina@1.0.5
+    version: /lamina@1.0.5
   leva:
     specifier: ^0.9.35
     version: 0.9.35(@types/react-dom@18.2.14)(@types/react@18.2.33)(react-dom@18.2.0)(react@18.2.0)
@@ -2878,6 +2881,10 @@ packages:
 
   /ktx-parse@0.4.5:
     resolution: {integrity: sha512-MK3FOody4TXbFf8Yqv7EBbySw7aPvEcPX++Ipt6Sox+/YMFvR5xaTyhfNSk1AEmMy+RYIw81ctN4IMxCB8OAlg==}
+    dev: false
+
+  /lamina@1.0.5:
+    resolution: {integrity: sha512-oBMOAqfYiLTmyz0mIi+SMOXuiaAYj3ELf0ejmV+NDc9GkuqxZpO312aZrF2QKZmkY2oa7I9sGB52EyQ1pjfaVg==}
     dev: false
 
   /lamina@1.1.23(@react-three/fiber@8.15.12)(@types/react-dom@18.2.14)(@types/react@18.2.33)(react-dom@18.2.0)(react@18.2.0)(three@0.159.0):
