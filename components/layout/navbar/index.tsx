@@ -13,15 +13,15 @@ export default async function Navbar() {
   const menu = await getMenu('next-js-frontend-header-menu');
 
   return (
-    <nav className="fixed left-0 top-0 z-50 flex w-full items-center justify-between bg-black p-4 lg:px-6">
-      <div className="block flex-none md:hidden">
+    <nav className=" fixed left-0 top-0 z-50 flex w-full items-center justify-between bg-opacity-5  p-4 px-8 ">
+      <div className="block flex-none md:hidden ">
         <MobileMenu menu={menu} />
       </div>
-      <div className="flex w-full items-center">
+      <div className=" flex  w-full items-center border-b-2 border-white pb-4">
         <div className="flex w-full md:w-1/3">
           <Link href="/" className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6">
             <LogoSquare />
-            <div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block">
+            <div className="ml-2 flex-none text-lg  font-medium uppercase md:hidden lg:block">
               {SITE_NAME}
             </div>
           </Link>
@@ -40,8 +40,10 @@ export default async function Navbar() {
             </ul>
           ) : null}
         </div>
-        <div className="hidden justify-center md:flex md:w-1/3">
-          <Search />
+        <div className="flex hidden justify-center  gap-14 text-lg md:flex md:w-1/3">
+          <Link href="/search">Marketplace</Link> <Link href="/search">About</Link>
+          <Link href="/search">Team</Link>
+          <Link href="/pages/contact">Contact</Link>
         </div>
         <div className="flex justify-end md:w-1/3">
           <Suspense fallback={<OpenCart />}>

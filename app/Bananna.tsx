@@ -18,7 +18,7 @@ import { LayerMaterial, Color, Depth } from 'lamina';
 export function Bannnaaa() {
   const [degraded, degrade] = useState(false);
   return (
-    <Canvas shadows camera={{ position: [105, 0, 15], fov: 20 }}>
+    <Canvas shadows camera={{ position: [105, 0, 15], fov: 13 }}>
       <spotLight
         position={[1, 12, 0]}
         angle={0.3}
@@ -28,7 +28,9 @@ export function Bannnaaa() {
         shadow-bias={-0.0001}
       />
       <ambientLight intensity={0.5} />
-      <Bannana scale={0.02} position={[0, -2.18, 0]} rotation={[0, Math.PI / 5, 0]} />
+      {/* <Bannana scale={1.22} position={[0, -1.35, 0]} rotation={[0, Math.PI / 5, 0]} /> */}
+      {/* <Bannana scale={1.22} position={[1.6, -1.35, 0]} rotation={[0, Math.PI / -5, 0]} /> */}
+      <Bannana />
       <AccumulativeShadows position={[0, -1.16, 0]} frames={100} alphaTest={0} scale={100}>
         <RandomizedLight amount={8} radius={10} ambient={0.5} position={[1, 5, -1]} />
       </AccumulativeShadows>
@@ -43,7 +45,7 @@ export function Bannnaaa() {
   );
 }
 
-function Bannana(props: any) {
+function BanannaInner1({ ...props }) {
   const { scene, animations } = useGLTF('/bananna.glb');
   const banannaAnimations = useAnimations(animations, scene);
 
@@ -56,6 +58,32 @@ function Bannana(props: any) {
   }
 
   return <primitive object={scene} {...props} />;
+}
+
+function BanannaInner2({ ...props }) {
+  const { scene, animations } = useGLTF('/bananna2.glb');
+  const banannaAnimations = useAnimations(animations, scene);
+
+  // Ensure that there is an animation name and the corresponding action exists.
+  const animationName = banannaAnimations.names.length > 1 ? banannaAnimations.names[1] : null;
+  const animationAction = animationName ? banannaAnimations.actions[animationName] : null;
+
+  if (animationAction) {
+    animationAction.play();
+  }
+
+  console.log(useGLTF('/bananna2.glb'));
+
+  return <primitive object={scene} {...props} />;
+}
+
+function Bannana() {
+  return (
+    <>
+      <BanannaInner1 scale={1.22} position={[1.6, -1.35, 0]} rotation={[0, Math.PI / -5, 0]} />
+      <BanannaInner2 scale={1.22} position={[-1.8, -1.35, 0]} rotation={[0, Math.PI / 5, 0]} />
+    </>
+  );
 }
 
 function CameraRig({ v = new THREE.Vector3() }) {
