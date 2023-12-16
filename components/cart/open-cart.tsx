@@ -9,10 +9,9 @@ export default function OpenCart({
   quantity?: number;
 }) {
   return (
-    <div className="relative flex h-11 w-11 items-center justify-center rounded-md text-white transition-colors  ">
+    <div className="relative flex h-11 w-11 items-center justify-center rounded-full bg-white text-black transition-colors  ">
       <ShoppingCartIcon
         className={clsx(' h-4 scale-150 transition-all ease-in-out  ', className)}
-        style={{ scale: '1.3' }}
       />
 
       {quantity ? (

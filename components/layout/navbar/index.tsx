@@ -17,13 +17,13 @@ export default async function Navbar() {
       <div className="block flex-none md:hidden ">
         <MobileMenu menu={menu} />
       </div>
-      <div className=" flex  w-full items-center border-b-2 border-white pb-4">
+      <div className=" grid w-full grid-cols-4 content-start items-center border-2 border-white border-opacity-30 bg-white bg-opacity-0  backdrop-blur-md">
         <div className="flex w-full md:w-1/3">
           <Link href="/" className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6">
             <LogoSquare />
-            <div className="ml-2 flex-none text-lg  font-medium uppercase md:hidden lg:block">
+            {/* <div className="ml-2 flex-none text-lg  font-medium uppercase md:hidden lg:block">
               {SITE_NAME}
-            </div>
+            </div> */}
           </Link>
           {menu.length ? (
             <ul className="hidden gap-6 text-sm md:flex md:items-center">
@@ -40,12 +40,24 @@ export default async function Navbar() {
             </ul>
           ) : null}
         </div>
-        <div className="flex hidden justify-center  gap-14 text-lg md:flex md:w-1/3">
-          <Link href="/search">Marketplace</Link> <Link href="/search">About</Link>
-          <Link href="/search">Team</Link>
-          <Link href="/pages/contact">Contact</Link>
+        <div className="col-span-2 grid h-full w-full grid-cols-4 content-end justify-start">
+          <NavLink linkTitle={'Marketplace'} url={'search'} num={'01'} last={false} />
+          <NavLink linkTitle={'About'} url={'search'} num={'02'} last={false} />
+          <NavLink linkTitle={'Team'} url={'search'} num={'03'} last={false} />
+          <NavLink linkTitle={'Contact'} url={'Contact'} num={'04'} last={true} />
+
+          {/* <Link className="flex" href="/search">
+            About
+          </Link>
+          <Link className="flex" href="/search">
+            Team
+          </Link>
+          <Link className="flex" href="/pages/contact">
+            Contact
+          </Link> */}
         </div>
-        <div className="flex justify-end md:w-1/3">
+        <div className="flex justify-end gap-3 px-3">
+          <Search />
           <Suspense fallback={<OpenCart />}>
             <Cart />
           </Suspense>
@@ -54,3 +66,27 @@ export default async function Navbar() {
     </nav>
   );
 }
+
+const NavLink = ({ linkTitle, url, last, num }: any) => {
+  return (
+    <>
+      {last ? (
+        <Link
+          className="relative flex content-center justify-center border-l-2 border-r-2 border-white border-opacity-20 py-7 text-xl uppercase   duration-300 ease-in-out hover:bg-white hover:bg-opacity-10"
+          href={`/${url}`}
+        >
+          <p className="absolute bottom-0 left-2 text-sm">{num}</p>
+          {linkTitle}
+        </Link>
+      ) : (
+        <Link
+          className="relative flex content-center justify-center border-l-2 border-white border-opacity-20 py-7 text-xl uppercase   duration-300 ease-in-out hover:bg-white hover:bg-opacity-10"
+          href={`/${url}`}
+        >
+          <p className="absolute bottom-0 left-2 text-sm">{num}</p>
+          {linkTitle}
+        </Link>
+      )}
+    </>
+  );
+};
