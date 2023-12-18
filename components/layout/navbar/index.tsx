@@ -14,12 +14,15 @@ export default async function Navbar() {
 
   return (
     <nav className=" fixed left-0 top-0 z-50 flex w-full items-center justify-between bg-opacity-5  p-4 px-8 ">
-      <div className="block flex-none md:hidden ">
+      <div className="block flex-none min-[1090px]:hidden">
         <MobileMenu menu={menu} />
       </div>
-      <div className=" grid w-full grid-cols-4 content-start items-center border-2 border-white border-opacity-30 bg-white bg-opacity-0  backdrop-blur-md">
+      <div className=" grid w-full grid-cols-4 content-start items-center border-2 border-white border-opacity-30 bg-white bg-opacity-0 backdrop-blur-md  max-[1432px]:grid-cols-[auto_1fr_1fr_1fr] max-[1090px]:hidden">
         <div className="flex w-full md:w-1/3">
-          <Link href="/" className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6">
+          <Link
+            href="/"
+            className=" mr-2 flex w-full items-center justify-center max-[1432px]:m-0 max-[1432px]:w-0 md:w-auto lg:mr-6"
+          >
             <LogoSquare />
             {/* <div className="ml-2 flex-none text-lg  font-medium uppercase md:hidden lg:block">
               {SITE_NAME}
@@ -40,7 +43,7 @@ export default async function Navbar() {
             </ul>
           ) : null}
         </div>
-        <div className="col-span-2 grid h-full w-full grid-cols-4 content-end justify-start">
+        <div className="col-span-2  grid h-full w-full grid-cols-4 content-end justify-start ">
           <NavLink linkTitle={'Marketplace'} url={'search'} num={'01'} last={false} />
           <NavLink linkTitle={'About'} url={'search'} num={'02'} last={false} />
           <NavLink linkTitle={'Team'} url={'search'} num={'03'} last={false} />
@@ -72,7 +75,7 @@ const NavLink = ({ linkTitle, url, last, num }: any) => {
     <>
       {last ? (
         <Link
-          className="relative flex content-center justify-center border-l-2 border-r-2 border-white border-opacity-20 py-7 text-xl uppercase   duration-300 ease-in-out hover:bg-white hover:bg-opacity-10"
+          className="pointer-bigger relative flex content-center justify-center border-l-2 border-r-2 border-white border-opacity-20 py-7 text-xl uppercase duration-300   ease-in-out hover:bg-white hover:bg-opacity-10 max-[1432px]:text-[1rem]"
           href={`/${url}`}
         >
           <p className="absolute bottom-0 left-2 text-sm">{num}</p>
@@ -80,7 +83,7 @@ const NavLink = ({ linkTitle, url, last, num }: any) => {
         </Link>
       ) : (
         <Link
-          className="relative flex content-center justify-center border-l-2 border-white border-opacity-20 py-7 text-xl uppercase   duration-300 ease-in-out hover:bg-white hover:bg-opacity-10"
+          className="pointer-bigger relative flex content-center justify-center border-l-2 border-white border-opacity-20 py-7 text-xl uppercase duration-300 ease-in-out   hover:bg-white hover:bg-opacity-10 max-[1432px]:px-4 max-[1432px]:text-[1rem]"
           href={`/${url}`}
         >
           <p className="absolute bottom-0 left-2 text-sm">{num}</p>

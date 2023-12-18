@@ -22,22 +22,31 @@
     "*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
+    "@ashthornton/asscroll": "^2.0.11",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@react-three/drei": "^9.92.1",
     "@react-three/fiber": "^8.15.12",
     "@react-three/postprocessing": "^2.15.11",
     "@react-three/rapier": "^1.2.1",
+    "@srexi/purecounterjs": "^1.5.0",
     "@types/three": "^0.159.0",
+    "canvas-confetti": "^1.9.2",
     "clsx": "^2.0.0",
     "geist": "^1.0.0",
+    "gsap": "^3.12.4",
+    "i": "^0.3.7",
     "lamina": "^1.1.23",
     "lamina-old": "npm:lamina@1.0.5",
     "leva": "^0.9.35",
+    "locomotive-scroll": "^4.1.4",
     "maath": "^0.10.4",
     "next": "14.0.0",
+    "npm": "^10.2.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-locomotive-scroll": "^0.2.2",
+    "split-type": "^0.3.4"
   },
   "devDependencies": {
     "@tailwindcss/container-queries": "^0.1.1",

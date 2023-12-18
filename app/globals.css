@@ -4,6 +4,53 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
+.title {
+  @media (max-width: 1130px) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    bottom: unset;
+  }
+}
+
+.pointer-bigger {
+  cursor: none;
+}
+
+.char {
+  font-kerning: none;
+}
+
+.heart {
+  background-color: transparent;
+  width: 100px;
+  height: 90px;
+  mix-blend-mode: difference;
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 52px;
+  height: 80px;
+  border-radius: 50px 50px 0 0;
+  background: red;
+}
+
+.heart::before {
+  left: 50px;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.heart::after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
   transition:
@@ -15,6 +62,16 @@ input:-webkit-autofill:focus {
   html {
     color-scheme: dark;
   }
+}
+
+body {
+  overflow-x: hidden;
+}
+html {
+  overflow-x: hidden;
+}
+.pin-spacer {
+  background-color: white;
 }
 
 @supports (font: -apple-system-body) and (-webkit-appearance: none) {

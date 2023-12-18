@@ -41,7 +41,7 @@ export default function Search() {
           defaultValue={searchParams?.get('q') || ''}
           className="w-full rounded-full bg-white bg-opacity-20 px-5 py-4 text-sm text-black   placeholder:text-white focus:outline-slate-600 focus-visible:ring-offset-slate-50 "
         />
-        <div className="-translate-x-2/2 absolute right-0 top-1/2 mr-2 flex h-11 w-11 -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full bg-white text-black transition-colors ">
+        <div className="search-bar -translate-x-2/2 absolute right-0 top-1/2 mr-2 flex h-11 w-11 -translate-y-1/2 transform cursor-pointer items-center justify-center rounded-full bg-white text-black transition-colors ">
           <MagnifyingGlassIcon className={clsx('h-4 scale-150  transition-all ease-in-out  ')} />
         </div>
       </div>

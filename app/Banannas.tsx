@@ -7,9 +7,11 @@ import { useGLTF, Float, PerformanceMonitor, Environment } from '@react-three/dr
 import { LayerMaterial as OldLayerMaterial, Base, Depth, Fresnel } from 'lamina-old/vanilla';
 import { Lightformers } from './Bg';
 
+// Predefine colors and material outside the component to prevent re-creation on each render
 const colorA = new THREE.Color('#ff9900').convertSRGBToLinear();
 const colorB = new THREE.Color('#f7e439').convertSRGBToLinear();
 const fresnel = new THREE.Color('#E7B473').convertSRGBToLinear();
+
 const material = new OldLayerMaterial({
   layers: [
     new Base({ color: colorA }),
@@ -34,24 +36,14 @@ const material = new OldLayerMaterial({
       origin: [1, 1, 1]
     }),
     new Fresnel({ mode: 'add', color: fresnel, intensity: 0.3, power: 2.5, bias: 0.0 })
-    // new Noise({
-    //   mapping: 'local',
-    //   type: 'simplex',
-    //   scale: 1000,
-    //   colorA: '#ffaf40',
-    //   colorB: 'black',
-    //   mode: 'overlay'
-    // })
   ]
 });
 
 function Noodle() {
   const { viewport, camera } = useThree();
   const { nodes } = useGLTF('/bananaTest.glb');
-  console.log(nodes);
-  // const [geometry] = useState(() => nodes[`Object_143`].geometry);
-  // @ts-ignore
-  const [geometry] = useState(() => nodes[`banana_low_Banana_0`].geometry);
+
+  const [geometry] = useState(() => nodes['banana_low_Banana_0'].geometry);
 
   const [speed] = useState(() => 0.1 + Math.random() / 10);
   const position = useMemo(() => {
@@ -63,9 +55,10 @@ function Noodle() {
       z
     ];
   }, []);
+
   return (
     <Float
-      position={position as any}
+      position={position}
       speed={speed}
       rotationIntensity={10}
       floatIntensity={40}
