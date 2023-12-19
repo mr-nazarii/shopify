@@ -26,8 +26,7 @@ const AboutSection = () => {
           start: '300px center',
           end: '+=3000 center',
           scrub: true,
-          pin: true,
-          markers: true
+          pin: true
         }
       });
       timeline
@@ -70,7 +69,7 @@ const AboutSection = () => {
         .to(
           `.about-text`,
           {
-            y: -700,
+            y: -600,
             duration: 30,
             opacity: 1
           },
