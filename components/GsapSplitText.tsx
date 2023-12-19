@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import SplitType from 'split-type';
 
-const GsapSplitText = ({ children }) => {
+const GsapSplitText = ({ children, ...props }) => {
   const textRef = useRef(null);
 
   useEffect(() => {
@@ -19,7 +19,8 @@ const GsapSplitText = ({ children }) => {
         rotationZ: '10',
         duration: 0.3,
         ease: 'power1.out',
-        stagger: 0.1
+        stagger: 0.1,
+        markers: true
       });
 
       // Cleanup function to revert split text to normal

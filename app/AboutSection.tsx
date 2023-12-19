@@ -2,7 +2,7 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import AnimatedButton from 'components/Button';
@@ -19,12 +19,13 @@ const AboutSection = () => {
 
       split = new SplitType('.about-text p', { types: 'chars' });
       gsap.set(split.chars, { opacity: 0 });
+      const translateY = window.innerWidth < 768 ? '-80vh' : '-57vh';
 
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: '.main-about-section',
           start: '300px center',
-          end: '+=3000 center',
+          end: '+=5000 center',
           scrub: true,
           pin: true
         }
@@ -37,6 +38,20 @@ const AboutSection = () => {
             scale: 2.2
           },
           0 // start time of this animation in the timeline
+        )
+        .to(
+          '.triangle1',
+          {
+            display: 'none'
+          },
+          0
+        )
+        .to(
+          '.triangle2',
+          {
+            display: 'none'
+          },
+          0
         )
         .to(
           `.imagezoom`,
@@ -69,7 +84,7 @@ const AboutSection = () => {
         .to(
           `.about-text`,
           {
-            y: -600,
+            y: translateY,
             duration: 30,
             opacity: 1
           },
@@ -93,7 +108,7 @@ const AboutSection = () => {
         {
           opacity: 1
         },
-        10
+        30
       ); // start at 15 seconds into the timeline
     });
 
@@ -114,17 +129,17 @@ const AboutSection = () => {
       className="main-about-section relative flex h-[100%] w-full flex-col bg-white"
     >
       <div className="about-section flex h-full w-full flex-col items-center justify-center ">
-        <div className="about-img-section static flex h-full w-full justify-center gap-9 ">
-          <div className=" relative h-[600px] min-h-[600px] w-[500px] min-w-[483px]  ">
+        <div className="about-img-section static flex h-full w-full justify-center gap-9 max-[1860px]:scale-[0.8] max-[1558px]:scale-[0.65] max-[1216px]:mb-10 max-[1216px]:scale-[0.52] max-[942px]:scale-[0.4] max-[718px]:scale-[0.3] max-[544px]:scale-[0.2]">
+          <div className="triangle relative h-[600px] min-h-[600px] w-[500px] min-w-[483px]   ">
             <Image
               alt="banannna"
               loading="lazy"
-              className="object-cover"
+              className=" object-cover"
               fill={true}
               src={'/bananas/5.png'}
             />
           </div>
-          <div className="relative h-[600px] min-h-[600px] w-[500px] min-w-[483px]  ">
+          <div className="triangle relative h-[600px] min-h-[600px] w-[500px] min-w-[483px]   ">
             <Image
               alt="banannna"
               loading="lazy"
@@ -133,7 +148,7 @@ const AboutSection = () => {
               src={'/bananas/4.png'}
             />
           </div>
-          <div className="imagezoom relative z-40 h-[600px] min-h-[600px] w-[500px] min-w-[483px]  ">
+          <div className="triangle imagezoom relative z-40 h-[600px] min-h-[600px] w-[500px] min-w-[483px]   ">
             <div
               className="shadowBottom absolute left-0 top-0 z-30 h-full w-full"
               style={{
@@ -142,7 +157,7 @@ const AboutSection = () => {
               }}
             />
             <div
-              className="shadowInner absolute left-0 top-0 z-30 h-full w-full"
+              className=" shadowInner absolute left-0 top-0 z-30 h-full w-full"
               style={{ background: '#2b2b2b0', opacity: '0' }}
             />
             <Image
@@ -151,9 +166,9 @@ const AboutSection = () => {
               className="z-20 object-cover"
               fill={true}
               src={'/bananas/2.png'}
-            />
+            />{' '}
           </div>
-          <div className="relative h-[600px] min-h-[600px] w-[500px] min-w-[483px]  ">
+          <div className="triangle relative h-[600px] min-h-[600px] w-[500px] min-w-[483px]   ">
             <Image
               alt="banannna"
               loading="lazy"
@@ -162,7 +177,7 @@ const AboutSection = () => {
               src={'/bananas/1.png'}
             />
           </div>
-          <div className="relative h-[600px] min-h-[600px] w-[500px] min-w-[483px]  ">
+          <div className="triangle relative h-[600px] min-h-[600px] w-[500px] min-w-[483px]   ">
             <Image
               alt="banannna"
               loading="lazy"

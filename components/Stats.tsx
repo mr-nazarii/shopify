@@ -7,6 +7,8 @@ import confetti from 'canvas-confetti';
 
 const Stats = ({ number, firstSentence, lastSentence }) => {
   const countRef = useRef(null);
+  const bgColor = useRef(null);
+
   const [hasAnimated, setHasAnimated] = useState(false);
 
   const triggerConfetti = () => {
@@ -28,7 +30,8 @@ const Stats = ({ number, firstSentence, lastSentence }) => {
 
   const updateColor = (currentValue) => {
     if (currentValue >= number) {
-      countRef.current.style.color = 'orange';
+      countRef.current.style.color = '#f8a444';
+
       triggerConfetti();
     } else {
       countRef.current.style.color = 'black'; // Default color
@@ -50,6 +53,7 @@ const Stats = ({ number, firstSentence, lastSentence }) => {
         }
       }
     });
+
     // @ts-ignore
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [number]);
@@ -84,15 +88,22 @@ const Stats = ({ number, firstSentence, lastSentence }) => {
   }, [animate, hasAnimated]);
 
   return (
-    <div className="relative mb-20 flex w-full min-w-[210px] items-center justify-between gap-5 border-2 border-r-0 border-black border-opacity-10 p-10 text-[10rem] text-black transition-colors duration-300 max-[1316px]:p-5 max-[1130px]:flex-col max-[1130px]:gap-0 max-[734px]:mb-0 max-[734px]:w-full">
+    <div
+      ref={bgColor}
+      className="relative mb-20 flex  w-full min-w-[210px] items-center justify-around gap-5  border-r-0 border-black border-opacity-5 bg-[#ffffff]  p-10 text-[10rem] text-black transition-colors duration-300 max-[1316px]:p-5 max-[1130px]:flex-col max-[1130px]:justify-center max-[1130px]:gap-0 max-[734px]:mb-0 max-[734px]:w-full max-[734px]:border-t-0"
+    >
+      <div
+        className="progress absolute left-0 right-0  z-0
+ m-auto h-[90%] w-[95%] rounded-full  border-black border-opacity-5  bg-white p-5"
+      />
       <p
-        className="text-[10rem] font-semibold max-[1840px]:text-[8rem] max-[1574px]:text-[6rem] max-[1398px]:text-[4.7rem] max-[1130px]:mb-0 max-[1130px]:text-[5.7rem]"
+        className="relative z-10 flex  justify-center rounded-full text-[10rem]  font-semibold max-[1840px]:text-[8rem] max-[1574px]:text-[6rem] max-[1398px]:text-[4.7rem] max-[1130px]:mb-0 max-[1130px]:text-[5.7rem] max-[1130px]:leading-[90%]"
         ref={countRef}
       >
         0
       </p>
-      <div>
-        <p className="text-[3rem] max-[2132px]:text-[2.5rem] max-[1698px]:text-[2.1rem] max-[1316px]:text-[1.7rem] ">
+      <div className="relative z-10">
+        <p className="text-[3rem] font-medium max-[2132px]:text-[2.5rem] max-[1698px]:text-[2.1rem] max-[1316px]:text-[1.7rem] ">
           {firstSentence}
         </p>
         <p className="text-[1.8rem] text-[#f8a444]  max-[2132px]:text-[1.3rem] max-[1698px]:text-[1rem]">

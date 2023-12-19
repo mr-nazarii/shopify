@@ -66,11 +66,11 @@ const AnimatedButton = ({ url, children }) => {
     <Link
       href={`/${url}`}
       ref={buttonRef}
-      className="button relative w-[200px] overflow-visible rounded-full border-none bg-transparent p-4 text-black outline-none"
+      className="button relative flex w-[200px] justify-center   overflow-visible rounded-full border-none bg-transparent p-4 text-black outline-none"
     >
-      <span className="relative z-20 text-lg font-bold">{children}</span>
+      <span className="relative z-20 text-lg font-semibold">{children}</span>
       <svg
-        className="absolute left-[15%] right-0 top-1/2 z-10 w-[75%] -translate-y-1/2 overflow-visible"
+        className="absolute  left-[15%] top-1/2 z-10 w-[75%] -translate-y-1/2  overflow-visible"
         viewBox="0 0 100 50"
         preserveAspectRatio="none"
       >

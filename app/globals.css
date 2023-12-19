@@ -64,6 +64,36 @@ input:-webkit-autofill:focus {
   }
 }
 
+.triangle::after {
+  position: absolute;
+  display: block;
+  content: '';
+  width: 0px;
+  height: 0px;
+  top: -1px;
+  left: -1px;
+  border-style: solid;
+  border-width: 0 0px 124px 157px;
+  border-color: transparent transparent #ffffff transparent;
+  transform: rotate(180deg);
+  z-index: 88;
+}
+
+.triangle::before {
+  position: absolute;
+  display: block;
+  content: '';
+  width: 0px;
+  height: 0px;
+  bottom: -1px;
+  right: -1px;
+  border-style: solid;
+  border-width: 0 0px 124px 157px;
+  z-index: 88;
+  border-color: transparent transparent #ffffff transparent;
+  transform: rotate(0deg);
+}
+
 body {
   overflow-x: hidden;
 }

@@ -14,10 +14,17 @@ export default async function Navbar() {
 
   return (
     <nav className=" fixed left-0 top-0 z-50 flex w-full items-center justify-between bg-opacity-5  p-4 px-8 ">
-      <div className="block flex-none min-[1090px]:hidden">
+      <div
+        className="absolute left-0 top-[-5px] z-30 h-32 w-full blur-sm"
+        style={{
+          background: 'linear-gradient(180deg, #00000067 0%, rgba(255,255,255,0) 100%)'
+        }}
+      />
+
+      <div className="z-40 block flex-none min-[1090px]:hidden">
         <MobileMenu menu={menu} />
       </div>
-      <div className=" grid w-full grid-cols-4 content-start items-center border-2 border-white border-opacity-30 bg-white bg-opacity-0 backdrop-blur-md  max-[1432px]:grid-cols-[auto_1fr_1fr_1fr] max-[1090px]:hidden">
+      <div className="z-40 grid w-full grid-cols-4 content-start items-center border-2 border-white border-opacity-30 bg-white bg-opacity-0 backdrop-blur-md  max-[1432px]:grid-cols-[auto_1fr_1fr_1fr] max-[1090px]:hidden">
         <div className="flex w-full md:w-1/3">
           <Link
             href="/"
