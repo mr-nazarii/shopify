@@ -43,7 +43,7 @@ function Noodle() {
   const { viewport, camera } = useThree();
   const { nodes } = useGLTF('/bananaTest.glb');
 
-  const [geometry] = useState(() => nodes['banana_low_Banana_0'].geometry);
+  const geometry = useMemo(() => (nodes['banana_low_Banana_0'] as any).geometry, [nodes]);
 
   const [speed] = useState(() => 0.1 + Math.random() / 10);
   const position = useMemo(() => {
