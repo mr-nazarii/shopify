@@ -116,10 +116,22 @@ const AboutSection = () => {
       <div className="about-section flex h-full w-full flex-col items-center justify-center ">
         <div className="about-img-section static flex h-full w-full justify-center gap-9 ">
           <div className=" relative h-[600px] min-h-[600px] w-[500px] min-w-[483px]  ">
-            <Image loading="lazy" className="object-cover" fill={true} src={'/bananas/5.png'} />
+            <Image
+              alt="banannna"
+              loading="lazy"
+              className="object-cover"
+              fill={true}
+              src={'/bananas/5.png'}
+            />
           </div>
           <div className="relative h-[600px] min-h-[600px] w-[500px] min-w-[483px]  ">
-            <Image loading="lazy" className="object-cover" fill={true} src={'/bananas/4.png'} />
+            <Image
+              alt="banannna"
+              loading="lazy"
+              className="object-cover"
+              fill={true}
+              src={'/bananas/4.png'}
+            />
           </div>
           <div className="imagezoom relative z-40 h-[600px] min-h-[600px] w-[500px] min-w-[483px]  ">
             <div
@@ -134,6 +146,7 @@ const AboutSection = () => {
               style={{ background: '#2b2b2b0', opacity: '0' }}
             />
             <Image
+              alt="banannna"
               loading="lazy"
               className="z-20 object-cover"
               fill={true}
@@ -141,10 +154,22 @@ const AboutSection = () => {
             />
           </div>
           <div className="relative h-[600px] min-h-[600px] w-[500px] min-w-[483px]  ">
-            <Image loading="lazy" className="object-cover" fill={true} src={'/bananas/1.png'} />
+            <Image
+              alt="banannna"
+              loading="lazy"
+              className="object-cover"
+              fill={true}
+              src={'/bananas/1.png'}
+            />
           </div>
           <div className="relative h-[600px] min-h-[600px] w-[500px] min-w-[483px]  ">
-            <Image loading="lazy" className="object-cover" fill={true} src={'/bananas/3.webp'} />
+            <Image
+              alt="banannna"
+              loading="lazy"
+              className="object-cover"
+              fill={true}
+              src={'/bananas/3.webp'}
+            />
           </div>
         </div>{' '}
         <div className="about-text max-[1044px]:w-4/4  h-full w-2/4 max-[2300px]:w-3/4 max-[806px]:w-full max-[806px]:p-10">
