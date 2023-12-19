@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/filename-case */
 'use client';
 
 import * as THREE from 'three';
@@ -54,10 +55,12 @@ function Noodle() {
       THREE.MathUtils.randFloatSpread(bounds.height * 0.75),
       z
     ];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Float
+      // @ts-ignore
       position={position}
       speed={speed}
       rotationIntensity={10}

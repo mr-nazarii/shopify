@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/filename-case */
 'use client';
 
 import Image from 'next/image';

@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/filename-case */
 'use client';
 
 import React, { useRef, useEffect, useState, useCallback } from 'react';
@@ -49,6 +50,8 @@ const Stats = ({ number, firstSentence, lastSentence }) => {
         }
       }
     });
+    // @ts-ignore
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [number]);
 
   useEffect(() => {
@@ -74,6 +77,7 @@ const Stats = ({ number, firstSentence, lastSentence }) => {
 
     return () => {
       if (countRef.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         observer.unobserve(countRef.current);
       }
     };

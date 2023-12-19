@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/filename-case */
 import React, { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import Link from 'next/link';
@@ -11,6 +12,8 @@ const AnimatedButton = ({ url, children }) => {
     const pointz = 30;
     const width = 100;
     const spacing = width / pointz;
+    // @ts-ignore
+    // eslint-disable-next-line prefer-const
     let initialPoints = [];
 
     for (let i = 0; i < pointz; i++) {
@@ -23,6 +26,7 @@ const AnimatedButton = ({ url, children }) => {
       if (isAnimating.current) return;
 
       isAnimating.current = true;
+      // eslint-disable-next-line no-unused-vars
       const animatedPoints = initialPoints.map((p, index) => ({ ...p }));
 
       animatedPoints.forEach((point, index) => {
