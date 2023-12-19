@@ -10,7 +10,7 @@ const GsapSplitText = ({ children }) => {
     const handleLoad = () => {
       // Initialize SplitType
       const typeSplit = new SplitType(textRef.current, {
-        types: 'lines, words, chars',
+        types: 'lines,words,chars',
         tagName: 'span'
       });
       gsap.from(typeSplit.words, {
