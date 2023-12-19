@@ -16,7 +16,7 @@ const AboutSection = () => {
     const ctx = gsap.context(() => {
       gsap.registerPlugin(ScrollTrigger);
 
-      split = new SplitType('.about-text p', { type: 'chars' });
+      split = new SplitType('.about-text p', { types: 'chars' });
       gsap.set(split.chars, { opacity: 0 });
 
       const timeline = gsap.timeline({
