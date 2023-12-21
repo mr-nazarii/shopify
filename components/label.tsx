@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import Price from './price';
 
 const Label = ({
   title,
@@ -13,19 +12,23 @@ const Label = ({
   position?: 'bottom' | 'center';
 }) => {
   return (
-    <div
-      className={clsx(
-        'absolute left-0 top-0 flex h-full w-full  items-center justify-center  transition-all ease-in-out hover:scale-[150]'
-      )}
-    >
-      <div className="flex scale-[0.01] items-center rounded-full border bg-white/70 p-1 text-xs font-semibold text-black backdrop-blur-md dark:border-neutral-800 dark:bg-black/70 dark:text-white">
-        <h3 className="mr-4 line-clamp-2 flex-grow pl-2 leading-none tracking-tight">{title}</h3>
-        <Price
-          className="flex-none rounded-full bg-blue-600 p-2 text-white"
-          amount={amount}
-          currencyCode={currencyCode}
-          currencyCodeClassName="hidden @[275px]/label:inline"
-        />
+    <div className={clsx('  flex h-auto  w-full  items-center justify-center bg-slate-800 ')}>
+      <div className="text-md relative flex h-full w-full flex-col items-start  gap-5 border  bg-white/70 p-6 px-4 font-semibold text-black backdrop-blur-md dark:border-neutral-800 dark:bg-black/70 dark:text-white">
+        <h3 className="mr-4 line-clamp-2 flex-grow pl-2 text-base leading-none tracking-tight">
+          {title}
+        </h3>
+        <div className="flex flex-col gap-2">
+          <p className="mr-4 line-clamp-2 flex-grow pl-2 text-sm leading-none tracking-tight">
+            {currencyCode} {amount}
+          </p>
+
+          <p className="mr-4 line-clamp-2 flex-grow pl-2 text-sm leading-none  tracking-tight text-slate-500">
+            Last sale: {currencyCode} {amount}{' '}
+          </p>
+        </div>
+        <p className="absolute bottom-[-43px] left-0 w-full items-center justify-items-center bg-blue-600 p-2 text-center text-white transition-all ease-in-out group-hover:bottom-[0px]">
+          Buy Now
+        </p>
       </div>
     </div>
   );

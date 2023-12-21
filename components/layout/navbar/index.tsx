@@ -28,12 +28,12 @@ export default async function Navbar() {
         <div className="flex w-full md:w-1/3">
           <Link
             href="/"
-            className=" mr-2 flex w-full items-center justify-center max-[1432px]:m-0 max-[1432px]:w-0 md:w-auto lg:mr-6"
+            className="relative mr-2 flex w-full items-center justify-center max-[1432px]:m-0 max-[1432px]:w-0 md:w-auto lg:mr-6"
           >
             <LogoSquare />
-            {/* <div className="ml-2 flex-none text-lg  font-medium uppercase md:hidden lg:block">
-              {SITE_NAME}
-            </div> */}
+            <div className="ml-2 flex-none text-lg  font-medium uppercase md:hidden lg:block">
+              {/* {SITE_NAME} Banana NFT */}
+            </div>
           </Link>
           {menu.length ? (
             <ul className="hidden gap-6 text-sm md:flex md:items-center">

@@ -1,88 +1,12 @@
 /* eslint-disable unicorn/filename-case */
 'use client';
 
+import { Environment, PerformanceMonitor } from '@react-three/drei';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Suspense, useState } from 'react';
 import * as THREE from 'three';
-import { useState, useMemo, Suspense } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { useGLTF, Float, PerformanceMonitor, Environment } from '@react-three/drei';
-import { LayerMaterial as OldLayerMaterial, Base, Depth, Fresnel } from 'lamina-old/vanilla';
 import { Lightformers } from './Bg';
-
-// Predefine colors and material outside the component to prevent re-creation on each render
-const colorA = new THREE.Color('#ff9900').convertSRGBToLinear();
-const colorB = new THREE.Color('#f7e439').convertSRGBToLinear();
-const fresnel = new THREE.Color('#E7B473').convertSRGBToLinear();
-
-const material = new OldLayerMaterial({
-  layers: [
-    new Base({ color: colorA }),
-    new Depth({
-      colorA: colorA,
-      colorB: colorB,
-      alpha: 0.5,
-      mode: 'normal',
-      near: 0,
-      far: 2,
-      // @ts-ignore
-      origin: [1, 1, 1]
-    }),
-    new Depth({
-      colorA: 'yellow',
-      colorB: 'orange',
-      alpha: 0.5,
-      mode: 'add',
-      near: 3,
-      far: 2,
-      // @ts-ignore
-      origin: [1, 1, 1]
-    }),
-    new Fresnel({ mode: 'add', color: fresnel, intensity: 0.3, power: 2.5, bias: 0.0 })
-  ]
-});
-
-function Noodle() {
-  const { viewport, camera } = useThree();
-  const { nodes } = useGLTF('/bananaTest.glb');
-
-  const geometry = useMemo(() => (nodes['banana_low_Banana_0'] as any).geometry, [nodes]);
-
-  const [speed] = useState(() => 0.1 + Math.random() / 10);
-  const position = useMemo(() => {
-    const z = Math.random() * -30;
-    const bounds = viewport.getCurrentViewport(camera, [0, 0, z]);
-    return [
-      THREE.MathUtils.randFloatSpread(bounds.width),
-      THREE.MathUtils.randFloatSpread(bounds.height * 0.75),
-      z
-    ];
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  return (
-    <Float
-      // @ts-ignore
-      position={position}
-      speed={speed}
-      rotationIntensity={10}
-      floatIntensity={40}
-      dispose={null}
-    >
-      <mesh scale={1.5} geometry={geometry} material={material}></mesh>
-    </Float>
-  );
-}
-
-export default function Noodles() {
-  return (
-    <>
-      {Array.from({ length: 25 }, (_, i) => (
-        <Noodle key={i} />
-      ))}
-    </>
-  );
-}
-
-useGLTF.preload('/bananna2.glb');
+import { Whale } from './Whale';
 
 export function Rig({ v = new THREE.Vector3() }) {
   return useFrame((state) => {
@@ -94,16 +18,38 @@ export const Banannas2 = () => {
   const [degraded, degrade] = useState(false);
 
   return (
-    <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 10], fov: 42 }}>
+    <Canvas resize={{ scroll: false }} dpr={[1, 2]} camera={{ position: [0, 0, 10], fov: 42 }}>
+      {/* Consider optimizing or reducing lights */}
+      {/* <spotLight
+        position={[10, 15, 0]}
+        angle={1.3}
+        penumbra={1}
+        castShadow
+        intensity={2}
+        shadow-bias={-0.0001}
+      />
+      <ambientLight intensity={0.5} /> */}
+
       <PerformanceMonitor onDecline={() => degrade(true)} />
-      <mesh scale={100}>
-        <Environment frames={degraded ? 1 : Infinity} resolution={256} background blur={1}>
-          <Lightformers />
-        </Environment>
-      </mesh>
+
+      {/* Optimize Environment */}
+
       <Suspense fallback={null}>
-        <Noodles />
-        {/* <Caption>{`THE\nSEVENTY-TWO\nNAMES\nOF GOD.`}</Caption> */}
+        <mesh scale={100}>
+          <Environment
+            frames={degraded ? 1 : Infinity}
+            resolution={degraded ? 128 : 256} // Lower resolution under degraded conditions
+            background
+            blur={degraded ? 0.5 : 1} // Reduce blur under degraded conditions
+          >
+            <Lightformers />
+          </Environment>
+        </mesh>
+        {/* Consider reducing the number of Whales if performance is an issue */}
+        {Array.from({ length: 5 }, (_, i) => (
+          <Whale key={i} />
+        ))}
+        {/* Rig component is optimized for smooth camera movement */}
         <Rig />
       </Suspense>
     </Canvas>
