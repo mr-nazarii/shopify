@@ -1,5 +1,6 @@
+/* eslint-disable jsx-a11y/alt-text */
 import clsx from 'clsx';
-import { getMenu } from 'lib/shopify';
+// import { getMenu } from 'lib/shopify';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -8,8 +9,8 @@ const { COMPANY_NAME, SITE_NAME } = process.env;
 export default async function Footer() {
   const currentYear = new Date().getFullYear();
   const copyrightDate = 2023 + (currentYear > 2023 ? `-${currentYear}` : '');
-  const skeleton = 'w-full h-6 animate-pulse rounded bg-neutral-200 dark:bg-neutral-700';
-  const menu = await getMenu('next-js-frontend-footer-menu');
+  // const skeleton = 'w-full h-6 animate-pulse rounded bg-neutral-200 dark:bg-neutral-700';
+  // const menu = await getMenu('next-js-frontend-footer-menu');
   const copyrightName = COMPANY_NAME || SITE_NAME || '';
 
   return (
@@ -26,6 +27,7 @@ export default async function Footer() {
                   src={'/Logo2.png'}
                   className={clsx('relative h-full w-full object-cover p-2', {})}
                   fill={true}
+                  alt={''}
                 />
               </Link>
             </div>

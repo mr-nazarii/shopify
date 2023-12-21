@@ -1,11 +1,11 @@
 /* eslint-disable unicorn/filename-case */
 'use client';
 
-import Image from 'next/image';
-import React, { useEffect, useLayoutEffect, useRef } from 'react';
+import AnimatedButton from 'components/Button';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import AnimatedButton from 'components/Button';
+import Image from 'next/image';
+import React, { useLayoutEffect, useRef } from 'react';
 import SplitType from 'split-type';
 
 const AboutSection = () => {

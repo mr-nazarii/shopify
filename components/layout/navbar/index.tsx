@@ -8,7 +8,6 @@ import { Suspense } from 'react';
 import MobileMenu from './mobile-menu';
 import Search from './search';
 const { SITE_NAME } = process.env;
-
 export default async function Navbar() {
   const menu = await getMenu('next-js-frontend-header-menu');
 
@@ -69,6 +68,7 @@ export default async function Navbar() {
         <div className="flex justify-end gap-3 px-3">
           <Search />
           <Suspense fallback={<OpenCart />}>
+            {/* // @ts-ignore */}
             <Cart />
           </Suspense>
         </div>

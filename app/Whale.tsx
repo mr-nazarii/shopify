@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Float, useAnimations, useGLTF } from '@react-three/drei';
 import { useGraph, useThree } from '@react-three/fiber';
 import { Color, Depth, LayerMaterial } from 'lamina';
@@ -14,7 +15,10 @@ type GLTFResult = GLTF & {
     _rootJoint: THREE.Bone;
   };
   materials: {
+    // @ts-ignore
     lambert1: THREE.MeshStandardMaterial;
+    // @ts-ignore
+
     lambert1: THREE.MeshStandardMaterial;
   };
 };
@@ -24,14 +28,16 @@ type GLTFActions = Record<ActionName, THREE.AnimationAction>;
 
 export function Whale(props: JSX.IntrinsicElements['group']) {
   const group = useRef<THREE.Group>();
+  // @ts-ignore
   const { materials, animations, scene } = useGLTF('/scene-transformed.glb') as GLTFResult;
+  // @ts-ignore
   const { actions } = useAnimations<GLTFActions>(animations, group);
 
   const clone = useMemo(() => SkeletonUtils.clone(scene), [scene]);
   const { nodes } = useGraph(clone);
 
   const speedRef = useRef(0.1 + Math.random() / 10);
-
+  // @ts-ignore
   const [name, setName] = useState('Swimming');
 
   useEffect(() => {
@@ -60,6 +66,7 @@ export function Whale(props: JSX.IntrinsicElements['group']) {
       rotationIntensity={10}
       floatIntensity={40}
       dispose={null}
+      // @ts-ignore
       position={position}
     >
       <group ref={group} {...props} dispose={null}>
@@ -70,7 +77,11 @@ export function Whale(props: JSX.IntrinsicElements['group']) {
                 <primitive object={nodes._rootJoint}>
                   <skinnedMesh
                     name="Object_37"
+                    // @ts-ignore
+
                     geometry={nodes.Object_37.geometry}
+                    // @ts-ignore
+
                     skeleton={nodes.Object_37.skeleton}
                   >
                     <LayerMaterial color="#ffffff" lighting="physical" transmission={2}>
